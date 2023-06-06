@@ -278,7 +278,7 @@ training_args = Seq2SeqTrainingArguments(
     generation_max_length=generation_max_length,
     predict_with_generate=predict_with_generate,
     push_to_hub=push_to_hub,
-    hub_token="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",
+    hub_token="my_hub_token",
 )
 
 
