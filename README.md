@@ -10,3 +10,16 @@ So that, With dynamic training approach, we always storing processed & augmented
 Dynamic Training is virtual container based Training Procedure where we processed data and performed augmentations in prior and keep storing these augmentations to the virtual container then perform training. In the Dynamic Training is virtual container based Training Procedure
 where we processed data and performed augmentations in prior and keep storing these augmentations to the virtual container then perform training.
 ![Screenshot 2023-06-06 114337](https://github.com/AIFahim/Dynamic-Traning-of-Whisper-ASR-Model/assets/33654834/5c6023dc-75ee-4b34-baee-8d7a49f5db06)
+
+### File details as follow:
+- audioaugmentations.py - This script contains List of Augmentations:
+    - speed Aug
+    - pitch Shift
+    - far FieldEffect
+    - background NoiseAug
+    - color Noise
+    - time and freq masking (SpecAug)
+    - down then upsampling (Old age microphone like effects)
+    - speech Enhence 
+- prepro_add2radis.py - This scirpt in add augmentations to the training data and push to the radis in a round robin fashion.
+- final_training_medium.py - This script for training whisper medium model which adapt to collect data from radis(customized data collator to get data from radis db)
