@@ -1,0 +1,30 @@
+# Core ML/DL Libraries
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.21.0
+pandas>=1.3.0
+
+# Audio Processing
+librosa>=0.9.0
+soundfile>=0.10.3
+pyrubberband>=0.3.0
+scipy>=1.7.0
+pyplnoise>=0.1.0
+
+# Transformers and Model
+transformers>=4.30.0
+datasets>=2.12.0
+evaluate>=0.4.0
+
+# Redis
+redis>=4.5.0
+
+# Text Processing
+bnunicodenormalizer>=0.0.40
+
+# Progress Tracking
+tqdm>=4.65.0
+
+# Optional Dependencies
+# Uncomment if using MLflow for experiment tracking
+# mlflow>=2.3.0 
