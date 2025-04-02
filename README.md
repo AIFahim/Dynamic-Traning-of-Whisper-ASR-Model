@@ -114,6 +114,51 @@ Dynamic training is a virtual container-based training procedure that solves the
 - **Type Safety**: Type hints and dataclasses for better code reliability
 - **Docker Support**: Containerized deployment for easy setup and execution
 
+## Streamlit Application
+
+The project includes a Streamlit web application for easy transcription of Bengali audio files:
+
+### Features
+- Upload Bengali audio files (WAV or MP3)
+- Automatic transcription using the trained Whisper model
+- Download transcription results as text files
+- Audio playback functionality
+- Information about the model and its capabilities
+
+### Application Interface
+The Streamlit application provides a user-friendly interface with the following components:
+
+1. **Title and Description**: 
+   - Clear title "🎤 Bengali Speech Recognition"
+   - Brief description of the application's purpose
+
+2. **File Upload Section**:
+   - File uploader for WAV and MP3 audio files
+   - Audio player to listen to the uploaded file
+
+3. **Transcription Section**:
+   - "Transcribe Audio" button to initiate transcription
+   - Progress indicator during processing
+   - Display of transcription results
+   - Download button for saving transcriptions
+
+4. **Model Information**:
+   - Expandable section with details about the model
+   - Model name, type, language, and features
+
+### Example Output
+When a user uploads an audio file and clicks "Transcribe Audio", the application will:
+
+1. Process the audio file using the Whisper ASR model
+2. Display the transcription result in a formatted text box
+3. Provide a download button to save the transcription as a text file
+
+The transcription output is in Bengali text, representing the spoken content of the audio file.
+
+### Streamlit Interface
+![Streamlit Application Interface](Output.png)
+
+
 ## Setup and Installation
 
 ### Requirements
@@ -285,50 +330,6 @@ Our dynamic training approach solves these issues by:
    ```bash
    streamlit run app.py
    ```
-
-## Streamlit Application
-
-The project includes a Streamlit web application for easy transcription of Bengali audio files:
-
-### Features
-- Upload Bengali audio files (WAV or MP3)
-- Automatic transcription using the trained Whisper model
-- Download transcription results as text files
-- Audio playback functionality
-- Information about the model and its capabilities
-
-### Application Interface
-The Streamlit application provides a user-friendly interface with the following components:
-
-1. **Title and Description**: 
-   - Clear title "🎤 Bengali Speech Recognition"
-   - Brief description of the application's purpose
-
-2. **File Upload Section**:
-   - File uploader for WAV and MP3 audio files
-   - Audio player to listen to the uploaded file
-
-3. **Transcription Section**:
-   - "Transcribe Audio" button to initiate transcription
-   - Progress indicator during processing
-   - Display of transcription results
-   - Download button for saving transcriptions
-
-4. **Model Information**:
-   - Expandable section with details about the model
-   - Model name, type, language, and features
-
-### Example Output
-When a user uploads an audio file and clicks "Transcribe Audio", the application will:
-
-1. Process the audio file using the Whisper ASR model
-2. Display the transcription result in a formatted text box
-3. Provide a download button to save the transcription as a text file
-
-The transcription output is in Bengali text, representing the spoken content of the audio file.
-
-### Streamlit Interface
-![Streamlit Application Interface](Output.png)
 
 ## Configuration
 
