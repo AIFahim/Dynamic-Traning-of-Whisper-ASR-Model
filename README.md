@@ -20,33 +20,7 @@ Dynamic training is a virtual container-based training procedure that solves the
 
 ## Process Flow
 
-```mermaid
-flowchart TD
-    LS["Local Storage\n(Full Dataset\nwith labels)"] -->|Data| PA["Preprocessing &\nAugmentations"]
-    PA -->|Store| VC["Virtual\nContainer"]
-    VC --> ContainerCheck{"Size(Virtual\nContainer) <\n50GB"}
-    
-    ContainerCheck -->|False| Sleep1["Sleep 5 Min"]
-    Sleep1 --> ContainerCheck
-    
-    ContainerCheck -->|True| BatchCheck{"Size(Virtual\nContainer) >\nBatch Size"}
-    
-    BatchCheck -->|True| Sleep2["Sleep 5 Min"]
-    Sleep2 --> BatchCheck
-    
-    BatchCheck -->|False| PB["Pop Batch Size\nAmount of Processed\nand Augmented\nSamples"]
-    PB --> MT["Model Training"]
-    MT --> BatchCheck
-    
-    %% Styling
-    classDef box fill:white,stroke:#333,stroke-width:2px
-    classDef diamond fill:white,stroke:#f39c12,stroke-width:2px
-    classDef sleep fill:white,stroke:#e74c3c,stroke-width:2px
-    
-    class LS,PA,VC,PB,MT box
-    class ContainerCheck,BatchCheck diamond
-    class Sleep1,Sleep2 sleep
-```
+![Dynamic Training Process Flow](./assets/dynamic_training_flow.png)
 
 ## Technical Implementation
 
@@ -298,19 +272,3 @@ The system includes comprehensive error handling:
 - Memory overflow protection
 - Training interruption handling
 
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit your changes
-4. Push to the branch
-5. Create a Pull Request
-
-## License
-
-[Your License]
-
-## Acknowledgments
-
-- OpenAI for the Whisper model
-- Contributors to the audio augmentation libraries
