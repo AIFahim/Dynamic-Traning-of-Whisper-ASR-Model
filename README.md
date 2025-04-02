@@ -62,7 +62,11 @@ Dynamic training is a virtual container-based training procedure that solves the
 ├── data_processor.py # Data preprocessing and feature extraction
 ├── training_manager.py # Model training and evaluation
 ├── config.py # Configuration using dataclasses
-└── environment.yml # Conda environment specification
+├── environment.yml # Conda environment specification
+├── Dockerfile # Docker configuration for containerized deployment
+├── docker-compose.yml # Docker Compose configuration
+├── .dockerignore # Files to exclude from Docker build
+└── .gitignore # Files to exclude from version control
 ```
 
 ### Key Components
@@ -108,6 +112,7 @@ Dynamic training is a virtual container-based training procedure that solves the
 - **Configurable**: Easy to modify parameters through config files
 - **Error Handling**: Robust error handling throughout the pipeline
 - **Type Safety**: Type hints and dataclasses for better code reliability
+- **Docker Support**: Containerized deployment for easy setup and execution
 
 ## Setup and Installation
 
@@ -117,7 +122,23 @@ Dynamic training is a virtual container-based training procedure that solves the
 - Redis server
 - CUDA-compatible GPU (recommended)
 
-### Option 1: Using Conda (Recommended)
+### Option 1: Using Docker (Recommended)
+```bash
+# Clone the repository
+git clone [your-repo-url]
+cd [your-repo-name]
+
+# Build and start the containers
+docker-compose up -d
+
+# Access the Streamlit application
+# Open your browser and navigate to http://localhost:8501
+
+# Stop the containers
+docker-compose down
+```
+
+### Option 2: Using Conda
 ```bash
 # Clone the repository
 git clone [your-repo-url]
@@ -131,7 +152,7 @@ conda activate whisper-dynamic-training
 # Update config.py with your Redis settings
 ```
 
-### Option 2: Using Pip
+### Option 3: Using Pip
 ```bash
 # Clone the repository
 git clone [your-repo-url]
@@ -145,7 +166,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### Redis Setup
+### Redis Setup (if not using Docker)
 1. Install Redis Server:
    ```bash
    # Ubuntu/Debian
@@ -166,6 +187,29 @@ pip install -r requirements.txt
    # Windows
    redis-server.exe
    ```
+
+## Docker Configuration
+
+The project includes Docker support for easy deployment:
+
+### Dockerfile
+- Based on NVIDIA CUDA 11.8 with cuDNN 8 for GPU support
+- Installs Python 3.10 and all required system dependencies
+- Sets up Redis server
+- Installs Python dependencies from requirements.txt
+- Creates a startup script that runs both Redis and the Streamlit application
+
+### docker-compose.yml
+- Defines the service configuration
+- Maps ports for Streamlit (8501) and Redis (6379)
+- Mounts the audio_input directory as a volume
+- Configures GPU access through NVIDIA Container Toolkit
+- Sets environment variables for Redis connection
+
+### Prerequisites for Docker
+- [Docker](https://docs.docker.com/get-docker/)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+- [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) (for GPU support)
 
 ## Configuration
 
@@ -236,6 +280,55 @@ Our dynamic training approach solves these issues by:
    ```bash
    python final_training_medium.py
    ```
+
+3. **Run the Streamlit application**:
+   ```bash
+   streamlit run app.py
+   ```
+
+## Streamlit Application
+
+The project includes a Streamlit web application for easy transcription of Bengali audio files:
+
+### Features
+- Upload Bengali audio files (WAV or MP3)
+- Automatic transcription using the trained Whisper model
+- Download transcription results as text files
+- Audio playback functionality
+- Information about the model and its capabilities
+
+### Application Interface
+The Streamlit application provides a user-friendly interface with the following components:
+
+1. **Title and Description**: 
+   - Clear title "🎤 Bengali Speech Recognition"
+   - Brief description of the application's purpose
+
+2. **File Upload Section**:
+   - File uploader for WAV and MP3 audio files
+   - Audio player to listen to the uploaded file
+
+3. **Transcription Section**:
+   - "Transcribe Audio" button to initiate transcription
+   - Progress indicator during processing
+   - Display of transcription results
+   - Download button for saving transcriptions
+
+4. **Model Information**:
+   - Expandable section with details about the model
+   - Model name, type, language, and features
+
+### Example Output
+When a user uploads an audio file and clicks "Transcribe Audio", the application will:
+
+1. Process the audio file using the Whisper ASR model
+2. Display the transcription result in a formatted text box
+3. Provide a download button to save the transcription as a text file
+
+The transcription output is in Bengali text, representing the spoken content of the audio file.
+
+### Streamlit Interface
+![Streamlit Application Interface](output.png)
 
 ## Configuration
 

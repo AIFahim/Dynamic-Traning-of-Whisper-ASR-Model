@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  app:
+    build: .
+    ports:
+      - "8501:8501"  # Streamlit
+      - "6379:6379"  # Redis
+    volumes:
+      - ./audio_input:/app/audio_input
+    environment:
+      - REDIS_HOST=localhost
+      - REDIS_PORT=6379
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+    restart: unless-stopped 
