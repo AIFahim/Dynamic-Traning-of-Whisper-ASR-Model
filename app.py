@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from inference import BengaliASRInference
 import tempfile
+import torch
 
 # Set page config
 st.set_page_config(
@@ -14,12 +15,19 @@ st.set_page_config(
 # Initialize the ASR model
 @st.cache_resource
 def load_model():
-    MODEL = "AIFahim/900hr_plus_augmented_whisper_medium"
-    return BengaliASRInference(
-        asr_model_path=MODEL,
-        chunk_length_s=20.1,
-        enable_beam=True
-    )
+    try:
+        MODEL = "AIFahim/900hr_plus_augmented_whisper_medium"
+        # Force CPU if CUDA is causing issues
+        device = "cpu" if torch.cuda.is_available() and torch.cuda.get_device_properties(0).total_memory < 4e9 else "cuda" if torch.cuda.is_available() else "cpu"
+        return BengaliASRInference(
+            asr_model_path=MODEL,
+            chunk_length_s=20.1,
+            enable_beam=True,
+            device=device
+        )
+    except Exception as e:
+        st.error(f"Error initializing model: {str(e)}")
+        return None
 
 def main():
     st.title("🎤 Bengali Speech Recognition")
@@ -29,10 +37,9 @@ def main():
     """)
 
     # Load the model
-    try:
-        asr = load_model()
-    except Exception as e:
-        st.error(f"Error loading the model: {str(e)}")
+    asr = load_model()
+    if asr is None:
+        st.error("Failed to load the model. Please try refreshing the page.")
         return
 
     # File uploader
