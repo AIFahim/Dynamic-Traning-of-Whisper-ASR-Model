@@ -141,27 +141,6 @@ The project includes a Streamlit web application for easy transcription of Benga
 - Audio playback functionality
 - Information about the model and its capabilities
 
-### Application Interface
-The Streamlit application provides a user-friendly interface with the following components:
-
-1. **Title and Description**: 
-   - Clear title "🎤 Bengali Speech Recognition"
-   - Brief description of the application's purpose
-
-2. **File Upload Section**:
-   - File uploader for WAV and MP3 audio files
-   - Audio player to listen to the uploaded file
-
-3. **Transcription Section**:
-   - "Transcribe Audio" button to initiate transcription
-   - Progress indicator during processing
-   - Display of transcription results
-   - Download button for saving transcriptions
-
-4. **Model Information**:
-   - Expandable section with details about the model
-   - Model name, type, language, and features
-
 ### Example Output
 When a user uploads an audio file and clicks "Transcribe Audio", the application will:
 
