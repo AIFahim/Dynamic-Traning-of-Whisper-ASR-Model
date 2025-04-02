@@ -328,7 +328,7 @@ When a user uploads an audio file and clicks "Transcribe Audio", the application
 The transcription output is in Bengali text, representing the spoken content of the audio file.
 
 ### Streamlit Interface
-![Streamlit Application Interface](output.png)
+![Streamlit Application Interface](Output.png)
 
 ## Configuration
 
