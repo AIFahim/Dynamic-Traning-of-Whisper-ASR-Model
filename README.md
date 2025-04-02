@@ -20,7 +20,7 @@ Dynamic training is a virtual container-based training procedure that solves the
 
 ## Process Flow
 
-![Dynamic Training Process Flow](https://github.com/AIFahim/Dynamic-Traning-of-Whisper-ASR-Model/blob/code-optimize/Dynamic%20Training%20Flow%20of%20Whisper%20ASR.png)
+![Streamlit Application Interface](./Dynamic%20Training%20Flow%20of%20Whisper%20ASR.png)
 
 ## Technical Implementation
 
