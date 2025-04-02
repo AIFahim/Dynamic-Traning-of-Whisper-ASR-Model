@@ -114,6 +114,22 @@ Dynamic training is a virtual container-based training procedure that solves the
 - **Type Safety**: Type hints and dataclasses for better code reliability
 - **Docker Support**: Containerized deployment for easy setup and execution
 
+## Available Model Weights
+
+The trained models are available on Hugging Face:
+
+1. **Whisper Medium (900hr+ Augmented)**
+   - Model: [AIFahim/900hr_plus_augmented_whisper_medium](https://huggingface.co/AIFahim/900hr_plus_augmented_whisper_medium)
+   - Trained on 900+ hours of Bengali audio data
+   - Includes dynamic augmentation during training
+   - Optimized for Bengali speech recognition
+
+2. **Whisper Small (900hr+ Augmented)**
+   - Model: [AIFahim/900hr_plus_augmented_whisper_small](https://huggingface.co/AIFahim/900hr_plus_augmented_whisper_small)
+   - Lighter version trained on the same dataset
+   - Suitable for resource-constrained environments
+   - Maintains good accuracy while being more efficient
+
 ## Streamlit Application
 
 The project includes a Streamlit web application for easy transcription of Bengali audio files:
